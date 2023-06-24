@@ -1,15 +1,38 @@
-function add(num1, num2) {
-    return num1 + num2;
+let op, num1, num2;
+
+function operate(op, num1, num2) {
+    let result;
+    switch(op) {
+        case "+":
+            result = add(num1, num2);
+            break;
+        case "-":
+            result = subtract(num1, num2);
+            break;
+        case "*":
+            result = multiply(num1, num2);
+            break;
+        case "/":
+            result = divide(num1, num2);
+            break;
+        default:
+            return "INVALID OPERATOR";
+    }
+    console.log(result);
 }
 
-function subtract(num1, num2) {
-    return num1 - num2;
+function add(a, b) {
+    return a + b;
 }
 
-function multiply(num1, num2) {
-    return num1 * num2;
+function subtract(a, b) {
+    return a - b;
 }
 
-function divide(num1, num2) {
-    return num1 / num2;
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    return a / b;
 }
