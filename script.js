@@ -18,7 +18,7 @@ function operate(op, num1, num2) {
         default:
             return "INVALID OPERATOR";
     }
-    console.log(result);
+    return result;
 }
 
 function add(a, b) {
