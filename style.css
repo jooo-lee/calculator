@@ -1,0 +1,22 @@
+#display {
+    border: 1px solid black;
+    padding: 20px;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+#calculator-body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+#clear-btn {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#del-btn {
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
