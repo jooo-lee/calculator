@@ -1,12 +1,19 @@
 const display = document.getElementById("display");
+const clearBtn = document.getElementById("clear-btn");
 
 const numBtns = document.querySelectorAll(".num");
 numBtns.forEach(btn => btn.addEventListener("click", displayNum));
+
+clearBtn.addEventListener("click", clearDisplay);
 
 function displayNum(e) {
     if (display.textContent.length < 9) {
         display.textContent += e.target.dataset.val;
     }
+}
+
+function clearDisplay(e) {
+    display.textContent = "";
 }
 
 function operate(op, num1, num2) {
