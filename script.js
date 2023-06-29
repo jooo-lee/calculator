@@ -1,18 +1,26 @@
 const display = document.getElementById("display");
 const clearBtn = document.getElementById("clear-btn");
 
+let currOperand = "";
+
 const numBtns = document.querySelectorAll(".num");
-numBtns.forEach(btn => btn.addEventListener("click", displayNum));
+numBtns.forEach(btn => btn.addEventListener("click", updateCurrOperand));
 
 clearBtn.addEventListener("click", clearDisplay);
 
-function displayNum(e) {
-    if (display.textContent.length < 9) {
-        display.textContent += e.target.dataset.val;
+function updateCurrOperand(e) {
+    if (currOperand.length < 9) {
+        currOperand += e.target.dataset.val;
+        updateDisplay(currOperand);
     }
 }
 
+function updateDisplay(newContent) {
+    display.textContent = newContent;
+}
+
 function clearDisplay(e) {
+    currOperand = "";
     display.textContent = "";
 }
 
