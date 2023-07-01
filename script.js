@@ -1,12 +1,32 @@
 const display = document.getElementById("display");
 const clearBtn = document.getElementById("clear-btn");
+const numBtns = document.querySelectorAll(".num");
+const operatorBtns = document.querySelectorAll(".op");
+const eqBtn = document.getElementById("eq-btn");
 
 let currOperand = "";
-
-const numBtns = document.querySelectorAll(".num");
-numBtns.forEach(btn => btn.addEventListener("click", updateCurrOperand));
+let prevOperand = "";
+let operator = "";
 
 clearBtn.addEventListener("click", clearDisplay);
+numBtns.forEach(btn => btn.addEventListener("click", updateCurrOperand));
+operatorBtns.forEach(btn => btn.addEventListener("click", addOperator));
+eqBtn.addEventListener("click", executeOperation);
+
+function executeOperation(e) {
+    if (prevOperand && operator) {
+        let result = operate(operator, Number(prevOperand), Number(currOperand));
+        updateDisplay(result);
+        currOperand = result;
+        operator = "";
+    }
+}
+
+function addOperator(e) {
+    prevOperand = currOperand;
+    currOperand = "";
+    operator = e.target.dataset.val;
+}
 
 function updateCurrOperand(e) {
     if (currOperand.length < 9) {
