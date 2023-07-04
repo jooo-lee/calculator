@@ -4,34 +4,74 @@ const numBtns = document.querySelectorAll(".num");
 const operatorBtns = document.querySelectorAll(".op");
 const eqBtn = document.getElementById("eq-btn");
 
-let currOperand = "";
-let prevOperand = "";
-let operator = "";
+/* 
+This array stores the first operand, the operator and the second operand.
+The length of this array also tells us which part of the operation we are at
+and thus which buttons can be pressed at that moment in time.
+*/
+const operation = [];
 
 clearBtn.addEventListener("click", clearDisplay);
-numBtns.forEach(btn => btn.addEventListener("click", updateCurrOperand));
-operatorBtns.forEach(btn => btn.addEventListener("click", addOperator));
+numBtns.forEach(btn => btn.addEventListener("click", updateOperand));
+operatorBtns.forEach(btn => btn.addEventListener("click", updateOperator));
 eqBtn.addEventListener("click", executeOperation);
 
-function executeOperation(e) {
-    if (prevOperand && operator) {
-        let result = operate(operator, Number(prevOperand), Number(currOperand));
+// --------------------------- Below are callback and helper functions ---------------------------
+
+function executeOperation() {
+    if (operation.length === 3) {
+        let result = operate(operation[1], Number(operation[0]), Number(operation[2]));
         updateDisplay(result);
-        currOperand = result;
-        operator = "";
+        operation.length = 0;
+        operation.push(result.toString());
     }
 }
 
-function addOperator(e) {
-    prevOperand = currOperand;
-    currOperand = "";
-    operator = e.target.dataset.val;
+function updateOperator(e) {
+    let operationLength = operation.length;
+    switch(operationLength) {
+        case 0:
+            break;
+        case 1:
+            operation.push(e.target.dataset.val);
+            break;
+        case 2:
+            operation[1] = e.target.dataset.val;
+            break;
+        case 3:
+            executeOperation();
+            operation.push(e.target.dataset.val);
+            break;
+        default:
+            console.log("ERROR");
+    }
 }
 
-function updateCurrOperand(e) {
-    if (currOperand.length < 9) {
-        currOperand += e.target.dataset.val;
-        updateDisplay(currOperand);
+function updateOperand(e) {
+    let operationLength = operation.length;
+    switch(operationLength) {
+        case 0:
+            operation.push(e.target.dataset.val);
+            updateDisplay(operation[0]);
+            break;
+        case 1:
+            if (operation[0].length < 9) {
+                operation[0] += e.target.dataset.val;
+            }
+            updateDisplay(operation[0]);
+            break;
+        case 2:
+            operation.push(e.target.dataset.val);
+            updateDisplay(operation[2]);
+            break;
+        case 3:
+            if (operation[2].length < 9) {
+                operation[2] += e.target.dataset.val;
+            }
+            updateDisplay(operation[2]);
+            break;
+        default:
+            console.log("ERROR");
     }
 }
 
@@ -40,7 +80,7 @@ function updateDisplay(newContent) {
 }
 
 function clearDisplay(e) {
-    currOperand = "";
+    operation.length = 0;
     display.textContent = "";
 }
 
