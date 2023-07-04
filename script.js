@@ -20,10 +20,10 @@ eqBtn.addEventListener("click", executeOperation);
 
 function executeOperation() {
     if (operation.length === 3) {
-        let result = operate(operation[1], Number(operation[0]), Number(operation[2]));
+        let result = operate(operation[1], operation[0], operation[2]);
         updateDisplay(result);
         operation.length = 0;
-        operation.push(result.toString());
+        operation.push(result);
     }
 }
 
@@ -86,6 +86,8 @@ function clearDisplay(e) {
 
 function operate(op, num1, num2) {
     let result;
+    num1 = Number(num1);
+    num2 = Number(num2);
     switch(op) {
         case "+":
             result = add(num1, num2);
@@ -102,7 +104,7 @@ function operate(op, num1, num2) {
         default:
             return "INVALID OPERATOR";
     }
-    return result;
+    return result.toString().slice(0, 9);
 }
 
 function add(a, b) {
