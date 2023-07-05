@@ -19,7 +19,10 @@ eqBtn.addEventListener("click", executeOperation);
 // --------------------------- Below are callback and helper functions ---------------------------
 
 function executeOperation() {
-    if (operation.length === 3) {
+    if (operation[1] === "/" && operation[2] === "0") {
+        updateDisplay(">:(");
+        operation.length = 0;
+    } else if (operation.length === 3) {
         let result = operate(operation[1], operation[0], operation[2]);
         updateDisplay(result);
         operation.length = 0;
