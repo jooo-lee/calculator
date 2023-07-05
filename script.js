@@ -79,7 +79,7 @@ function updateDisplay(newContent) {
     display.textContent = newContent;
 }
 
-function clearDisplay(e) {
+function clearDisplay() {
     operation.length = 0;
     display.textContent = "";
 }
@@ -103,6 +103,11 @@ function operate(op, num1, num2) {
             break;
         default:
             return "INVALID OPERATOR";
+    }
+    if (result > 999999999) {
+        result = 999999999;
+    } else if (result < 0.0000001) {
+        result = 0.0000001;
     }
     return result.toString().slice(0, 9);
 }
