@@ -106,8 +106,10 @@ function operate(op, num1, num2) {
     }
     if (result > 999999999) {
         result = 999999999;
-    } else if (result < 0.0000001) {
+    } else if (result < 0.0000001 && result > 0) {
         result = 0.0000001;
+    } else if (result > -0.000001 && result < 0) {
+        result = -0.000001;
     }
     return result.toString().slice(0, 9);
 }
