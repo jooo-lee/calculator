@@ -3,6 +3,7 @@ const clearBtn = document.getElementById("clear-btn");
 const numBtns = document.querySelectorAll(".num");
 const operatorBtns = document.querySelectorAll(".op");
 const eqBtn = document.getElementById("eq-btn");
+const decimalBtn = document.getElementById("decimal-btn");
 
 /* 
 This array stores the first operand, the operator and the second operand as strings.
@@ -15,8 +16,37 @@ clearBtn.addEventListener("click", clearDisplay);
 numBtns.forEach(btn => btn.addEventListener("click", updateOperand));
 operatorBtns.forEach(btn => btn.addEventListener("click", updateOperator));
 eqBtn.addEventListener("click", executeOperation);
+decimalBtn.addEventListener("click", addDecimal);
 
 // --------------------------- Below are callback and helper functions ---------------------------
+
+function addDecimal() {
+    let operationLength = operation.length;
+    switch(operationLength) {
+        case 0:
+            operation.push("0.");
+            updateDisplay(operation[0]);
+            break;
+        case 1:
+            if (operation[0].length < 9 && Number.isInteger(Number(operation[0]))) {
+                operation[0] += ".";
+                updateDisplay(operation[0]);
+            }
+            break;
+        case 2:
+            operation.push("0.");
+            updateDisplay(operation[2]);
+            break;
+        case 3:
+            if (operation[2].length < 9 && Number.isInteger(Number(operation[2]))) {
+                operation[2] += ".";
+                updateDisplay(operation[2]);
+            }
+            break;
+        default:
+            console.log("ERROR");
+    }
+}
 
 function executeOperation() {
     if (operation[1] === "/" && operation[2] === "0") {
