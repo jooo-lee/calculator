@@ -58,6 +58,7 @@ function updateOperand(e) {
             updateDisplay(operation[0]);
             break;
         case 1:
+            // Prevent leading zeroes
             if (operation[0] === "0") {
                 if (e.target.dataset.val === "0") {
                     break;
@@ -77,6 +78,7 @@ function updateOperand(e) {
             updateDisplay(operation[2]);
             break;
         case 3:
+            // Prevent leading zeroes
             if (operation[2] === "0") {
                 if (e.target.dataset.val === "0") {
                     break;
