@@ -5,7 +5,7 @@ const operatorBtns = document.querySelectorAll(".op");
 const eqBtn = document.getElementById("eq-btn");
 
 /* 
-This array stores the first operand, the operator and the second operand.
+This array stores the first operand, the operator and the second operand as strings.
 The length of this array also tells us which part of the operation we are at
 and thus which buttons can be pressed at that moment in time.
 */
@@ -58,6 +58,15 @@ function updateOperand(e) {
             updateDisplay(operation[0]);
             break;
         case 1:
+            if (operation[0] === "0") {
+                if (e.target.dataset.val === "0") {
+                    break;
+                } else {
+                    operation[0] = e.target.dataset.val;
+                    updateDisplay(operation[0]);
+                    break;
+                }
+            }
             if (operation[0].length < 9) {
                 operation[0] += e.target.dataset.val;
             }
@@ -68,6 +77,15 @@ function updateOperand(e) {
             updateDisplay(operation[2]);
             break;
         case 3:
+            if (operation[2] === "0") {
+                if (e.target.dataset.val === "0") {
+                    break;
+                } else {
+                    operation[2] = e.target.dataset.val;
+                    updateDisplay(operation[2]);
+                    break;
+                }
+            }
             if (operation[2].length < 9) {
                 operation[2] += e.target.dataset.val;
             }
