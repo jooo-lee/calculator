@@ -157,14 +157,22 @@ function operate(op, num1, num2) {
         default:
             return "INVALID OPERATOR";
     }
-    if (result > 999999999) {
-        result = 999999999;
-    } else if (result < 0.0000001 && result > 0) {
-        result = 0.0000001;
-    } else if (result > -0.000001 && result < 0) {
-        result = -0.000001;
+    return truncateNumber(result);
+}
+
+// Keep number to 9 characters
+function truncateNumber(num) {
+    if (num > 999999999) {
+        num = 999999999;
+    } else if (num < 0.0000001 && num > 0) {
+        num = 0.0000001;
+    } else if (num > -0.000001 && num < 0) {
+        num = -0.000001;
+    } else if (num < -99999999) {
+        num = -99999999;
     }
-    return result.toString().slice(0, 9);
+    num = Number(num.toFixed(8));
+    return num.toString().slice(0, 9);
 }
 
 function add(a, b) {
