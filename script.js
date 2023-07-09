@@ -28,7 +28,7 @@ function addDecimal() {
             updateDisplay(operation[0]);
             break;
         case 1:
-            if (operation[0].length < 9 && Number.isInteger(Number(operation[0]))) {
+            if (operation[0].length < 9 && operation[0].indexOf(".") === -1) {
                 operation[0] += ".";
                 updateDisplay(operation[0]);
             }
@@ -38,7 +38,7 @@ function addDecimal() {
             updateDisplay(operation[2]);
             break;
         case 3:
-            if (operation[2].length < 9 && Number.isInteger(Number(operation[2]))) {
+            if (operation[2].length < 9 && operation[2].indexOf(".") === -1) {
                 operation[2] += ".";
                 updateDisplay(operation[2]);
             }
