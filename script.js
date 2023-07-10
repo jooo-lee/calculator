@@ -4,6 +4,7 @@ const numBtns = document.querySelectorAll(".num");
 const operatorBtns = document.querySelectorAll(".op");
 const eqBtn = document.getElementById("eq-btn");
 const decimalBtn = document.getElementById("decimal-btn");
+const minusBtn = document.getElementById("minus-btn");
 
 /* 
 This array stores the first operand, the operator and the second operand as strings.
@@ -17,8 +18,31 @@ numBtns.forEach(btn => btn.addEventListener("click", updateOperand));
 operatorBtns.forEach(btn => btn.addEventListener("click", updateOperator));
 eqBtn.addEventListener("click", executeOperation);
 decimalBtn.addEventListener("click", addDecimal);
+minusBtn.addEventListener("click", reverseSign);
 
 // --------------------------- Below are callback and helper functions ---------------------------
+
+function reverseSign() {
+    let operationLength = operation.length;
+    switch(operationLength) {
+        case 0:
+            operation.push("-");
+            updateDisplay(operation[0]);
+            break;
+        case 1:
+            break;
+        case 2:
+            if (operation[1] === "*" || operation[1] === "/") {
+                operation.push("-");
+                updateDisplay(operation[2]);
+            }
+            break;
+        case 3:
+            break;
+        default:
+            console.log("ERROR");
+    }
+}
 
 function addDecimal() {
     let operationLength = operation.length;
@@ -52,7 +76,7 @@ function executeOperation() {
     if (operation[1] === "/" && operation[2] === "0") {
         updateDisplay(">:(");
         operation.length = 0;
-    } else if (operation.length === 3) {
+    } else if (operation.length === 3 && operation[2] !== "-") {
         let result = operate(operation[1], operation[0], operation[2]);
         updateDisplay(result);
         operation.length = 0;
@@ -66,9 +90,17 @@ function updateOperator(e) {
         case 0:
             break;
         case 1:
+            if (operation[0] === "-") {
+                break;
+            }
             operation.push(e.target.dataset.val);
             break;
         case 2:
+            if (operation[1] === "*" || operation[1] === "/") {
+                if (e.target.dataset.val === "-") {
+                    break;
+                } 
+            }
             operation[1] = e.target.dataset.val;
             break;
         case 3:
