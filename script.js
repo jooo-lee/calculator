@@ -25,11 +25,11 @@ minusBtn.addEventListener("click", reverseSign);
 function reverseSign() {
     let operationLength = operation.length;
     switch(operationLength) {
-        case 0:
-            operation.push("-");
-            updateDisplay(operation[0]);
-            break;
         case 1:
+            if (operation[0] === "0") {
+                operation[0] = "-";
+                updateDisplay(operation[0]);
+            }
             break;
         case 2:
             if (operation[1] === "*" || operation[1] === "/") {
@@ -47,10 +47,6 @@ function reverseSign() {
 function addDecimal() {
     let operationLength = operation.length;
     switch(operationLength) {
-        case 0:
-            operation.push("0.");
-            updateDisplay(operation[0]);
-            break;
         case 1:
             if (operation[0].length < 9 && operation[0].indexOf(".") === -1) {
                 operation[0] += ".";
@@ -87,10 +83,10 @@ function executeOperation() {
 function updateOperator(e) {
     let operationLength = operation.length;
     switch(operationLength) {
-        case 0:
-            break;
         case 1:
             if (operation[0] === "-") {
+                break;
+            } else if (operation[0] === "0" && e.target.dataset.val === "-") {
                 break;
             }
             operation.push(e.target.dataset.val);
@@ -115,10 +111,6 @@ function updateOperator(e) {
 function updateOperand(e) {
     let operationLength = operation.length;
     switch(operationLength) {
-        case 0:
-            operation.push(e.target.dataset.val);
-            updateDisplay(operation[0]);
-            break;
         case 1:
             // Prevent leading zeroes
             if (operation[0] === "0") {
@@ -166,7 +158,8 @@ function updateDisplay(newContent) {
 
 function clearDisplay() {
     operation.length = 0;
-    display.textContent = "";
+    operation.push("0");
+    updateDisplay(operation[0]);
 }
 
 function operate(op, num1, num2) {
