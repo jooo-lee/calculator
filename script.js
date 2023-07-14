@@ -5,6 +5,7 @@ const operatorBtns = document.querySelectorAll(".op");
 const eqBtn = document.getElementById("eq-btn");
 const decimalBtn = document.getElementById("decimal-btn");
 const minusBtn = document.getElementById("minus-btn");
+const btns = document.querySelectorAll("button");
 
 /* 
 This array stores the first operand, the operator and the second operand as strings.
@@ -13,12 +14,15 @@ and thus which buttons can be pressed at that moment in time.
 */
 const operation = [];
 
+let dividingByZero = false;
+
 clearBtn.addEventListener("click", clearDisplay);
 numBtns.forEach(btn => btn.addEventListener("click", updateOperand));
 operatorBtns.forEach(btn => btn.addEventListener("click", updateOperator));
 eqBtn.addEventListener("click", executeOperation);
 decimalBtn.addEventListener("click", addDecimal);
 minusBtn.addEventListener("click", reverseSign);
+btns.forEach(btn => btn.addEventListener("click", updateDisplay));
 
 // --------------------------- Below are callback and helper functions ---------------------------
 
@@ -28,13 +32,11 @@ function reverseSign() {
         case 1:
             if (operation[0] === "0") {
                 operation[0] = "-";
-                updateDisplay(operation[0]);
             }
             break;
         case 2:
             if (operation[1] === "*" || operation[1] === "/") {
                 operation.push("-");
-                updateDisplay(operation[2]);
             }
             break;
         case 3:
@@ -50,17 +52,14 @@ function addDecimal() {
         case 1:
             if (operation[0].length < 9 && operation[0].indexOf(".") === -1) {
                 operation[0] += ".";
-                updateDisplay(operation[0]);
             }
             break;
         case 2:
             operation.push("0.");
-            updateDisplay(operation[2]);
             break;
         case 3:
             if (operation[2].length < 9 && operation[2].indexOf(".") === -1) {
                 operation[2] += ".";
-                updateDisplay(operation[2]);
             }
             break;
         default:
@@ -70,11 +69,10 @@ function addDecimal() {
 
 function executeOperation() {
     if (operation[1] === "/" && operation[2] === "0") {
-        updateDisplay(">:(");
-        operation.length = 0;
+        dividingByZero = true;
+        return;
     } else if (operation.length === 3 && operation[2] !== "-") {
         let result = operate(operation[1], operation[0], operation[2]);
-        updateDisplay(result);
         operation.length = 0;
         operation.push(result);
     }
@@ -118,18 +116,15 @@ function updateOperand(e) {
                     break;
                 } else {
                     operation[0] = e.target.dataset.val;
-                    updateDisplay(operation[0]);
                     break;
                 }
             }
             if (operation[0].length < 9) {
                 operation[0] += e.target.dataset.val;
             }
-            updateDisplay(operation[0]);
             break;
         case 2:
             operation.push(e.target.dataset.val);
-            updateDisplay(operation[2]);
             break;
         case 3:
             // Prevent leading zeroes
@@ -138,28 +133,34 @@ function updateOperand(e) {
                     break;
                 } else {
                     operation[2] = e.target.dataset.val;
-                    updateDisplay(operation[2]);
                     break;
                 }
             }
             if (operation[2].length < 9) {
                 operation[2] += e.target.dataset.val;
             }
-            updateDisplay(operation[2]);
             break;
         default:
             console.log("ERROR");
     }
 }
 
-function updateDisplay(newContent) {
-    display.textContent = newContent;
+function updateDisplay() {
+    if (dividingByZero) {
+        operation.length = 0;
+        display.textContent = ">:(";
+        dividingByZero = false;
+        return;
+    }
+    let text = operation.join(" ");
+    text = text.replace("*", "x");
+    text = text.replace("/", "÷");
+    display.textContent = text;
 }
 
 function clearDisplay() {
     operation.length = 0;
     operation.push("0");
-    updateDisplay(operation[0]);
 }
 
 function operate(op, num1, num2) {
