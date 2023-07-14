@@ -8,7 +8,7 @@ const minusBtn = document.getElementById("minus-btn");
 const btns = document.querySelectorAll("button");
 
 /* 
-This array stores the first operand, the operator and the second operand as strings.
+The operation array stores the first operand, the operator and the second operand as strings.
 The length of this array also tells us which part of the operation we are at
 and thus which buttons can be pressed at that moment in time.
 */
@@ -27,8 +27,7 @@ btns.forEach(btn => btn.addEventListener("click", updateDisplay));
 // --------------------------- Below are callback and helper functions ---------------------------
 
 function reverseSign() {
-    let operationLength = operation.length;
-    switch(operationLength) {
+    switch(operation.length) {
         case 1:
             if (operation[0] === "0") {
                 operation[0] = "-";
@@ -47,8 +46,7 @@ function reverseSign() {
 }
 
 function addDecimal() {
-    let operationLength = operation.length;
-    switch(operationLength) {
+    switch(operation.length) {
         case 1:
             if (operation[0].length < 9 && operation[0].indexOf(".") === -1) {
                 operation[0] += ".";
@@ -79,8 +77,7 @@ function executeOperation() {
 }
 
 function updateOperator(e) {
-    let operationLength = operation.length;
-    switch(operationLength) {
+    switch(operation.length) {
         case 1:
             if (operation[0] === "-") {
                 break;
@@ -107,8 +104,7 @@ function updateOperator(e) {
 }
 
 function updateOperand(e) {
-    let operationLength = operation.length;
-    switch(operationLength) {
+    switch(operation.length) {
         case 1:
             // Prevent leading zeroes
             if (operation[0] === "0") {
