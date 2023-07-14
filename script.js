@@ -12,9 +12,9 @@ This array stores the first operand, the operator and the second operand as stri
 The length of this array also tells us which part of the operation we are at
 and thus which buttons can be pressed at that moment in time.
 */
-const operation = [];
-
+const operation = ["0"];
 let dividingByZero = false;
+updateDisplay();
 
 clearBtn.addEventListener("click", clearDisplay);
 numBtns.forEach(btn => btn.addEventListener("click", updateOperand));
@@ -148,6 +148,7 @@ function updateOperand(e) {
 function updateDisplay() {
     if (dividingByZero) {
         operation.length = 0;
+        operation.push("0");
         display.textContent = ">:(";
         dividingByZero = false;
         return;
