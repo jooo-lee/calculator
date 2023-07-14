@@ -1,3 +1,14 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    align-content: center;
+}
+
 #display {
     height: 18.5px;
     border: 1px solid black;
@@ -7,9 +18,13 @@
 }
 
 #calculator-body {
+    height: 400px;
+    width: 300px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 5px;
+    border: 1px solid black;
+    padding: 10px;
 }
 
 #clear-btn {
