@@ -1,5 +1,6 @@
 const displayText = document.getElementById("display-text");
 const clearBtn = document.getElementById("clear-btn");
+const delBtn = document.getElementById("del-btn");
 const numBtns = document.querySelectorAll(".num");
 const operatorBtns = document.querySelectorAll(".op");
 const eqBtn = document.getElementById("eq-btn");
@@ -17,6 +18,7 @@ let dividingByZero = false;
 updateDisplay();
 
 clearBtn.addEventListener("click", clearDisplay);
+delBtn.addEventListener("click", removeLastChar);
 numBtns.forEach(btn => btn.addEventListener("click", updateOperand));
 operatorBtns.forEach(btn => btn.addEventListener("click", updateOperator));
 eqBtn.addEventListener("click", executeOperation);
@@ -25,6 +27,18 @@ minusBtn.addEventListener("click", reverseSign);
 btns.forEach(btn => btn.addEventListener("click", updateDisplay));
 
 // --------------------------- Below are callback and helper functions ---------------------------
+
+function removeLastChar() {
+    if (operation.length === 1 && operation[0].length === 1) {
+        clearDisplay();
+    } else if (operation[operation.length - 1].length === 1) {
+        operation.pop();
+    } else {
+        let lastElemIndex = operation.length - 1;
+        let lastElem = operation[lastElemIndex];
+        operation[lastElemIndex] = lastElem.slice(0, -1);
+    }
+}
 
 function reverseSign() {
     switch(operation.length) {
