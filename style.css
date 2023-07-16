@@ -15,8 +15,12 @@ body {
     align-content: center;
 }
 
+button {
+    font-size: 20px;
+}
+
 #display {
-    height: 18.5px;
+    font-size: 30px;
     border: 1px solid black;
     padding: 20px;
     grid-column-start: 1;
@@ -24,8 +28,8 @@ body {
 }
 
 #calculator-body {
-    height: 400px;
-    width: 300px;
+    height: 500px;
+    width: 400px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 5px;
