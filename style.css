@@ -20,11 +20,18 @@ button {
 }
 
 #display {
-    font-size: 30px;
+    position: relative;
     border: 1px solid black;
     padding: 20px;
     grid-column-start: 1;
     grid-column-end: 5;
+}
+
+#display-text {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 30px;
 }
 
 #calculator-body {

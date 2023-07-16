@@ -1,4 +1,4 @@
-const display = document.getElementById("display");
+const displayText = document.getElementById("display-text");
 const clearBtn = document.getElementById("clear-btn");
 const numBtns = document.querySelectorAll(".num");
 const operatorBtns = document.querySelectorAll(".op");
@@ -145,14 +145,14 @@ function updateDisplay() {
     if (dividingByZero) {
         operation.length = 0;
         operation.push("0");
-        display.textContent = ">:(";
+        displayText.textContent = ">:(";
         dividingByZero = false;
         return;
     }
     let text = operation.join(" ");
     text = text.replace("*", "x");
     text = text.replace("/", "÷");
-    display.textContent = text;
+    displayText.textContent = text;
 }
 
 function clearDisplay() {
