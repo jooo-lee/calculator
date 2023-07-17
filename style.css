@@ -23,7 +23,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 5px;
     border: 1px solid black;
-    border-radius: 15px;
+    border-radius: 8px;
     padding: 10px;
     background-color: #3B4346;
 }
@@ -31,7 +31,7 @@ body {
 #display {
     position: relative;
     border: 1px solid black;
-    border-radius: 15px;
+    border-radius: 8px;
     padding: 20px;
     margin-bottom: 5px;
     grid-column-start: 1;
@@ -49,9 +49,17 @@ body {
 
 button {
     border: 1px solid black;
-    border-radius: 15px;
+    border-radius: 8px;
     font-size: 20px;
     cursor: pointer;
+}
+
+#btns-last-row {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: 5px;
 }
 
 .num, #decimal-btn {
@@ -67,13 +75,9 @@ button {
 }
 
 #clear-btn {
-    grid-column-start: 1;
-    grid-column-end: 3;
     background-color: #DAD5AA;
 }
 
 #del-btn {
-    grid-column-start: 3;
-    grid-column-end: 5;
     background-color: #DAD5AA;
 }
