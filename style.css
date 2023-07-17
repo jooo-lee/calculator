@@ -13,29 +13,7 @@ body {
     display: grid;
     place-items: center;
     align-content: center;
-}
-
-button {
-    border: 1px solid black;
-    border-radius: 15px;
-    font-size: 20px;
-}
-
-#display {
-    position: relative;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 5px;
-    grid-column-start: 1;
-    grid-column-end: 5;
-}
-
-#display-text {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    font-size: 30px;
+    background-color: #DAD5AA;
 }
 
 #calculator-body {
@@ -47,14 +25,55 @@ button {
     border: 1px solid black;
     border-radius: 15px;
     padding: 10px;
+    background-color: #3B4346;
+}
+
+#display {
+    position: relative;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 5px;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    background-color: #21100E;
+}
+
+#display-text {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 30px;
+    color: #ff0000;
+}
+
+button {
+    border: 1px solid black;
+    border-radius: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.num, #decimal-btn {
+    background-color: #ffffff;
+}
+
+.op {
+    background-color: #DAD5AA;
+}
+
+#eq-btn {
+    background-color: #FFA355;
 }
 
 #clear-btn {
     grid-column-start: 1;
     grid-column-end: 3;
+    background-color: #DAD5AA;
 }
 
 #del-btn {
     grid-column-start: 3;
     grid-column-end: 5;
+    background-color: #DAD5AA;
 }
