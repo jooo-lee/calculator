@@ -17,8 +17,8 @@ body {
 }
 
 #calculator-body {
-    height: 500px;
-    width: 400px;
+    height: 450px;
+    width: 300px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 5px;
@@ -58,7 +58,7 @@ button {
     grid-column-start: 1;
     grid-column-end: 5;
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-columns: 1.5fr 1fr 1.5fr;
     gap: 5px;
 }
 
