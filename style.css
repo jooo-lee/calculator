@@ -21,10 +21,10 @@ body {
     width: 400px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
+    gap: 10px;
     border: 1px solid black;
     border-radius: 8px;
-    padding: 10px;
+    padding: 20px;
     background-color: #3B4346;
 }
 
@@ -33,7 +33,6 @@ body {
     border: 1px solid black;
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 5px;
     grid-column-start: 1;
     grid-column-end: 5;
     background-color: #21100E;
@@ -48,7 +47,7 @@ body {
 }
 
 button {
-    border: 1px solid black;
+    border: none;
     border-radius: 8px;
     font-size: 35px;
     cursor: pointer;
@@ -64,7 +63,7 @@ button:hover {
     grid-column-end: 5;
     display: grid;
     grid-template-columns: 1.5fr 1fr 1.5fr;
-    gap: 5px;
+    gap: 10px;
 }
 
 .num, #decimal-btn {
@@ -94,4 +93,5 @@ button:hover {
     color: white;
     line-height: 20px;
     font-size: 65px;
+    user-select: none;
 }
