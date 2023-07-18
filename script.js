@@ -17,6 +17,7 @@ const operation = ["0"];
 let dividingByZero = false;
 updateDisplay();
 
+// Adding event listeners
 clearBtn.addEventListener("click", clearDisplay);
 delBtn.addEventListener("click", removeLastChar);
 numBtns.forEach(btn => btn.addEventListener("click", updateOperand));
@@ -24,9 +25,22 @@ operatorBtns.forEach(btn => btn.addEventListener("click", updateOperator));
 eqBtn.addEventListener("click", executeOperation);
 decimalBtn.addEventListener("click", addDecimal);
 minusBtn.addEventListener("click", reverseSign);
+window.addEventListener("keydown", checkKeyboardInput)
 btns.forEach(btn => btn.addEventListener("click", updateDisplay));
 
 // --------------------------- Below are callback and helper functions ---------------------------
+
+function checkKeyboardInput(e) {
+    // Allow equal button to be clicked with either "=" or "Enter" key pressed
+    if (e.key === "Enter") {
+        document.querySelector(`[data-val="="]`).click();
+        return;
+    }
+    let selectedBtn = document.querySelector(`[data-val="${e.key}"]`);
+    if (selectedBtn) {
+        selectedBtn.click();
+    }
+}
 
 function removeLastChar() {
     if (operation.length === 1 && operation[0].length === 1) {
