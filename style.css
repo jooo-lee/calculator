@@ -26,6 +26,7 @@ body {
     border-radius: 8px;
     padding: 20px;
     background-color: #3B4346;
+    user-select: none;
 }
 
 #display {
@@ -93,5 +94,4 @@ button:hover {
     color: white;
     line-height: 20px;
     font-size: 65px;
-    user-select: none;
 }
