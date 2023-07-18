@@ -24,7 +24,7 @@ numBtns.forEach(btn => btn.addEventListener("click", updateOperand));
 operatorBtns.forEach(btn => btn.addEventListener("click", updateOperator));
 eqBtn.addEventListener("click", executeOperation);
 decimalBtn.addEventListener("click", addDecimal);
-minusBtn.addEventListener("click", reverseSign);
+minusBtn.addEventListener("click", negateNumber);
 window.addEventListener("keydown", checkKeyboardInput)
 btns.forEach(btn => btn.addEventListener("click", updateDisplay));
 
@@ -55,7 +55,7 @@ function removeLastChar() {
     }
 }
 
-function reverseSign() {
+function negateNumber() {
     switch(operation.length) {
         case 1:
             if (operation[0] === "0") {
