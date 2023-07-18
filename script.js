@@ -70,7 +70,7 @@ function negateNumber() {
         case 3:
             break;
         default:
-            console.log("ERROR");
+            console.log("Negation error!");
     }
 }
 
@@ -90,7 +90,7 @@ function addDecimal() {
             }
             break;
         default:
-            console.log("ERROR");
+            console.log("Add decimal error!");
     }
 }
 
@@ -128,7 +128,7 @@ function updateOperator(e) {
             operation.push(e.target.dataset.val);
             break;
         default:
-            console.log("ERROR");
+            console.log("Update operator error!");
     }
 }
 
@@ -166,7 +166,7 @@ function updateOperand(e) {
             }
             break;
         default:
-            console.log("ERROR");
+            console.log("Update operand error!");
     }
 }
 
@@ -207,7 +207,7 @@ function operate(op, num1, num2) {
             result = divide(num1, num2);
             break;
         default:
-            return "INVALID OPERATOR";
+            return "Invalid operator!";
     }
     return truncateNumber(result);
 }
