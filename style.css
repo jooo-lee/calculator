@@ -14,17 +14,18 @@ body {
     place-items: center;
     align-content: center;
     background-color: #DAD5AA;
+    overflow: hidden;
 }
 
 #calculator-body {
-    height: 500px;
-    width: 400px;
+    height: 312.5px;
+    width: 250px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 5px;
     border: 1px solid black;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 4px;
+    padding: 15px;
     background-color: #3B4346;
     user-select: none;
 }
@@ -32,27 +33,28 @@ body {
 #display {
     position: relative;
     border: 1px solid black;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 4px;
+    padding: 10px;
     grid-column-start: 1;
     grid-column-end: 5;
     background-color: #21100E;
+    margin-bottom: 5px;
 }
 
 #display-text {
     position: absolute;
     bottom: 5px;
     right: 5px;
-    font-size: 30px;
+    font-size: 18px;
     color: #ff0000;
 }
 
 button {
     border: none;
-    border-radius: 8px;
-    font-size: 35px;
+    border-radius: 4px;
+    font-size: 20px;
     cursor: pointer;
-    line-height: 20px;
+    line-height: 1.6;
 }
 
 button:hover {
@@ -64,7 +66,7 @@ button:hover {
     grid-column-end: 5;
     display: grid;
     grid-template-columns: 1.5fr 1fr 1.5fr;
-    gap: 10px;
+    gap: 5px;
 }
 
 .num, #decimal-btn {
@@ -92,6 +94,41 @@ button:hover {
     justify-content: center;
     align-items: center;
     color: white;
-    line-height: 20px;
-    font-size: 65px;
+    line-height: 1;
+    font-size: 32px;
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets and desktop */
+    #calculator-body {
+        height: 500px;
+        width: 400px;
+        gap: 10px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    #display {
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    #display-text {
+        bottom: 10px;
+        right: 10px;
+        font-size: 30px;
+    }
+
+    button {
+        border-radius: 8px;
+        font-size: 35px;
+    }
+
+    #btns-last-row {
+        gap: 10px;
+    }
+
+    #smiley {
+        font-size: 48px;
+    }
 }
