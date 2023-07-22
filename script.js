@@ -31,9 +31,14 @@ btns.forEach(btn => btn.addEventListener("click", updateDisplay));
 // --------------------------- Below are callback and helper functions ---------------------------
 
 function checkKeyboardInput(e) {
-    // Allow equal button to be clicked with either "=" or "Enter" key pressed
+    // Allow equal button to be clicked when either "=" or "Enter" key pressed
     if (e.key === "Enter") {
         document.querySelector(`[data-val="="]`).click();
+        return;
+    }
+    // Allow multiply button to be clicked when either "*" or "x" key pressed
+    if (e.key === "x") {
+        document.querySelector(`[data-val="*"]`).click();
         return;
     }
     let selectedBtn = document.querySelector(`[data-val="${e.key}"]`);
