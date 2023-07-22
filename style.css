@@ -133,6 +133,7 @@ a:link, a:visited {
     }
 
     button {
+        color: black;
         border-radius: 8px;
         font-size: 35px;
     }
