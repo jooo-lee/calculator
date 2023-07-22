@@ -50,6 +50,7 @@ body {
 }
 
 button {
+    color: black;
     border: none;
     border-radius: 4px;
     font-size: 20px;
@@ -133,7 +134,6 @@ a:link, a:visited {
     }
 
     button {
-        color: black;
         border-radius: 8px;
         font-size: 35px;
     }
