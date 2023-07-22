@@ -50,7 +50,8 @@ body {
 }
 
 button {
-    color: black;
+    appearance: none;
+    color: black !important;
     border: none;
     border-radius: 4px;
     font-size: 20px;
